@@ -36,8 +36,8 @@ Express Backend development
 
 ### Week 3
 
-React Frontend development
+React Frontend development, basic tailwind
 
-### Week 4
+### Extra time
 
-Implementing tailwind, extra features, final testing, and presentation prep
+Advanced tailwind, extra features, extra testing
