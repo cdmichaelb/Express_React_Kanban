@@ -1,2 +1,43 @@
-# Express_React_Kanban
-Fullstack Kanban recreated with Mernstack
+# Kanban Remake Capstone
+
+## Project Overview
+
+An even more advanced Kanban task organizer. Capstone Project for PDX Code Guild Class MERNmaid.
+
+Projected minimum viable products completion date: June \_\_, 2022
+
+## Functionality
+
+Initial Features:
+
+- Implement a kanban backend using Express
+- Implement a kanban frontend using React as a SPA
+- Format using TailwindCSS
+- Implement drag and drop to move tasks.
+- Implement Comments and Tags
+
+Extra Features:
+
+- Implement Progressive Web Apps <https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps>
+
+## Data Model
+
+![Data Model](./Kanban%20Captstone%20Diagram.drawio.svg)
+
+## Schedule
+
+### Week 1
+
+Database planning, model creation, and test creation.
+
+### Week 2
+
+Express Backend development
+
+### Week 3
+
+React Frontend development
+
+### Week 4
+
+Implementing tailwind, extra features, final testing, and presentation prep
