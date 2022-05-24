@@ -22,7 +22,7 @@ Extra Features:
 
 ## Data Model
 
-![Data Model](./Kanban%20Captstone%20Diagram.drawio.svg)
+![Data Model](./Kanban%20Capstone%20Diagram.drawio.svg)
 
 ## Schedule
 
