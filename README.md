@@ -28,16 +28,22 @@ Extra Features:
 
 ### Week 1
 
-Database planning, model creation, and test creation.
+- [x] Readme.md
+- [ ] Database planning
+- [ ] Model creation
+- [ ] Test creation
 
 ### Week 2
 
-Express Backend development
+- [ ] Express Backend development
 
 ### Week 3
 
-React Frontend development, basic tailwind
+- [ ] React Frontend development
+- [ ] Basic tailwind
 
 ### Extra time
 
-Advanced tailwind, extra features, extra testing
+- [ ] Advanced tailwind
+- [ ] Extra features
+- [ ] Extra testing
