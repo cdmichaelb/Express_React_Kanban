@@ -10,15 +10,15 @@ Projected minimum viable products completion date: June \_\_, 2022
 
 Initial Features:
 
-- Implement a kanban backend using Express
-- Implement a kanban frontend using React as a SPA
-- Format using TailwindCSS
-- Implement drag and drop to move tasks.
-- Implement Comments and Tags
+[ ] Implement a Kanban-backend using Express
+[ ] Implement a Kanban-frontend using React as a SPA
+[ ] Format using TailwindCSS
+[ ] Implement drag and drop to move tasks.
+[ ] Implement Comments and Tags
 
 Extra Features:
 
-- Implement Progressive Web Apps <https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps>
+[ ] Implement Progressive Web Apps <https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps>
 
 ## Data Model
 
