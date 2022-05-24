@@ -1,0 +1,14 @@
+{
+	"name": "kanban",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"concurrently": "concurrently -p [{name}] -c bgBlue.bold,bgGreen.bold -n API,UI",
+		"start": "yarn concurrently \"cd backend && yarn start\" \"cd frontend && yarn start\"",
+		"test": "cd backend && yarn test"
+	},
+	"dependencies": {
+		"concurrently": "^7.2.1"
+	}
+}
