@@ -38,4 +38,5 @@ const kanbanSchema = new Schema({
 // Middleware
 
 // Export
-module.exports = mongoose.model("Kanban", kanbanSchema);
+const Kanban = mongoose.model("Kanban", kanbanSchema);
+module.exports = Kanban;
