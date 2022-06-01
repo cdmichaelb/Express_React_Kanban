@@ -2,10 +2,10 @@
 // one-to-many with kanbans
 // one-to-many with tasks
 const mongoose = require("mongoose");
-const { Schema } = mongoose.Schema;
+const { Schema } = mongoose;
 
 // Model
-const userSchema = new Schema(
+const userSchema = Schema(
 	{
 		name: {
 			type: String,
@@ -40,6 +40,8 @@ const userSchema = new Schema(
 	}
 );
 
+// Virtuals
+
 userSchema.virtual("kanbans", {
 	ref: "Kanban",
 	localField: "_id",
@@ -52,9 +54,19 @@ userSchema.virtual("tasks", {
 	foreignField: "user",
 });
 
+// Statics
+userSchema.statics.signup = async function (username, email, password) {
+	const user = new this();
+	user.name = username;
+	user.email = email;
+	user.password = password;
+
+	return await user.save();
+};
+
 // Methods
 
-userSchema.methods.toJSON = function () {
+userSchema.methods.sanitize = function () {
 	const user = this;
 	const userObject = user.toObject();
 
@@ -82,6 +94,4 @@ userSchema.pre("save", function (next) {
 
 // Export
 const User = mongoose.model("User", userSchema);
-User.methods = userMethods;
-User.middleware = userMiddleware;
 module.exports = User;

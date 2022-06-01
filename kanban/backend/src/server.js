@@ -10,6 +10,11 @@ const envPath = path.resolve(__dirname, "../../.env");
 dotenv.config({ path: envPath });
 
 // Import routes
+const kanbanRoutes = require("./routes/kanban.routes");
+const authRoutes = require("./routes/auth.routes");
+const columnRoutes = require("./routes/column.routes");
+const taskRoutes = require("./routes/task.routes");
+// const adminRoutes = require("./routes/admin.routes");
 
 // Create Express server
 const app = express();
@@ -21,13 +26,18 @@ app.use(morgan("dev"));
 app.use(cors());
 
 // Routes
+// app.use("/kanban", kanbanRoutes);
+// app.use("/auth", authRoutes);
+// app.use("/column", columnRoutes);
+// app.use("/task", taskRoutes);
+// app.use("/admin", adminRoutes);
 
 // Connect to MongoDB
 const connectDB = async (dbName = process.env.DB_NAME) => {
 	try {
 		const connection = await mongoose.connect(`mongodb://localhost/${dbName}`);
 		if (process.env.ENV !== "test") {
-			console.log(`🚀Connected to mongodb://localhost/${dbName}`);
+			console.log(`\n💾Connected to mongodb://localhost/${dbName}`);
 		}
 		return connection;
 	} catch (err) {
@@ -42,7 +52,7 @@ const startServer = async () => {
 	try {
 		app.listen(process.env.PORT, async () => {
 			await connectDB();
-			console.log(`🚀Server started on port ${process.env.PORT}`);
+			console.log(`🚀Server started at http://localhost:${process.env.PORT}\n`);
 		});
 	} catch (err) {
 		console.error(err);
