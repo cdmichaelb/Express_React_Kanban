@@ -1,7 +1,7 @@
 const chai = require("chai");
 const dotenv = require("dotenv");
 
-const { app } = require("../server");
+const { app } = require("../src/server");
 dotenv.config();
 
 describe("auth.routes.js", () => {

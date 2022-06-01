@@ -2,35 +2,35 @@ const chai = require("chai");
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 const { expect } = chai;
-const { app } = require("../server");
+const { app } = require("../src/server");
 dotenv.config();
 
-describe("Board Routes", () => {
-	it("should create a board", async () => {
+describe("kanban Routes", () => {
+	it("should create a kanban", async () => {
 		const res = await chai
 			.request(app)
-			.post("/board/")
+			.post("/kanban/")
 			.set("Authorization", `Bearer ${process.env.TEST_TOKEN}`)
 			.send({
-				title: "Test Board",
+				title: "Test kanban",
 				description: "test",
 				userId: jwt.verify(process.env.TEST_TOKEN, process.env.JWT_SECRET)._id,
 			});
 
 		expect(res.status).to.eq(201);
 		expect(res.body["title"]).to.exist;
-		expect(res.body["title"]).to.eq("Test Board");
+		expect(res.body["title"]).to.eq("Test kanban");
 		expect(res.body["description"]).to.exist;
 		expect(res.body["user"]).to.exist;
 		expect(res.body["_id"]).to.exist;
-		this.boardId = res.body["_id"];
-		process.env.BOARD_ID = this.boardId;
+		this.kanbanId = res.body["_id"];
+		process.env.kanban_ID = this.kanbanId;
 		this.userId = res.body["user"];
 	});
-	it("should not create a board with no title", async () => {
+	it("should not create a kanban with no title", async () => {
 		const res = await chai
 			.request(app)
-			.post("/board/")
+			.post("/kanban/")
 			.set("Authorization", `Bearer ${process.env.TEST_TOKEN}`)
 			.send({
 				title: "",
@@ -40,79 +40,79 @@ describe("Board Routes", () => {
 
 		expect(res.status).to.eq(400);
 	});
-	it("should read a board", async () => {
+	it("should read a kanban", async () => {
 		const res = await chai
 			.request(app)
-			.get(`/board/${this.boardId}`)
+			.get(`/kanban/${this.kanbanId}`)
 			.set("Authorization", `Bearer ${process.env.TEST_TOKEN}`);
 
 		expect(res.status).to.eq(201);
 		expect(res.body["title"]).to.exist;
-		expect(res.body["title"]).to.eq("Test Board");
+		expect(res.body["title"]).to.eq("Test kanban");
 		expect(res.body["description"]).to.exist;
 		expect(res.body["user"]).to.exist;
 		expect(res.body["_id"]).to.exist;
 	});
 
-	it("should update a board", async () => {
+	it("should update a kanban", async () => {
 		const res = await chai
 			.request(app)
-			.put(`/board/${this.boardId}`)
+			.put(`/kanban/${this.kanbanId}`)
 			.set("Authorization", `Bearer ${process.env.TEST_TOKEN}`)
 			.send({
-				title: "Test Board Updated",
+				title: "Test kanban Updated",
 				description: "test",
 				userId: jwt.verify(process.env.TEST_TOKEN, process.env.JWT_SECRET)._id,
 			});
 
 		expect(res.status).to.eq(200);
 		expect(res.body["title"]).to.exist;
-		expect(res.body["title"]).to.eq("Test Board Updated");
+		expect(res.body["title"]).to.eq("Test kanban Updated");
 		expect(res.body["description"]).to.exist;
 		expect(res.body["user"]).to.exist;
 		expect(res.body["_id"]).to.exist;
 	});
 
-	it("should delete a board", async () => {
+	it("should delete a kanban", async () => {
 		const res = await chai
 			.request(app)
-			.delete(`/board/${this.boardId}`)
+			.delete(`/kanban/${this.kanbanId}`)
 			.set("Authorization", `Bearer ${process.env.TEST_TOKEN}`);
 
 		expect(res.status).to.eq(200);
 		expect(res.body["title"]).to.exist;
-		expect(res.body["title"]).to.eq("Test Board Updated");
+		expect(res.body["title"]).to.eq("Test kanban Updated");
 		expect(res.body["description"]).to.exist;
 		expect(res.body["user"]).to.exist;
 		expect(res.body["_id"]).to.exist;
 	});
 
-	it("should create a second board", async () => {
+	it("should create a second kanban", async () => {
 		const res = await chai
 			.request(app)
-			.post("/board/")
+			.post("/kanban/")
 			.set("Authorization", `Bearer ${process.env.TEST_TOKEN}`)
 			.send({
-				title: "Second Test Board",
+				title: "Second Test kanban",
 				description: "test",
 				userId: jwt.verify(process.env.TEST_TOKEN, process.env.JWT_SECRET)._id,
 			});
 
 		expect(res.status).to.eq(201);
 		expect(res.body["title"]).to.exist;
-		expect(res.body["title"]).to.eq("Second Test Board");
+		expect(res.body["title"]).to.eq("Second Test kanban");
 		expect(res.body["description"]).to.exist;
 		expect(res.body["user"]).to.exist;
 		expect(res.body["_id"]).to.exist;
-		this.boardId = res.body["_id"];
-		process.env.BOARD_ID = this.boardId;
+		this.kanbanId = res.body["_id"];
+		process.env.kanban_ID = this.kanbanId;
 		this.userId = res.body["user"];
 	});
 
-	it("should get all boards", async () => {
+	it("should get all kanbans", async () => {
 		const res = await chai
 			.request(app)
-			.get("/board/")
+			.get("/kanban/")
 			.set("Authorization", `Bearer ${process.env.TEST_TOKEN}`);
 
 		expect(res.status).to.eq(200);

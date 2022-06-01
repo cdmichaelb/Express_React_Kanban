@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 dotenv.config();
 process.env.ENV = "test";
-const { connectDatabase } = require("../server");
+const { connectDatabase } = require("../src/server");
 
 chai.use(chaiHttp);
 
