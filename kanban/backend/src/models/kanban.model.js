@@ -4,6 +4,7 @@
 
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const { ObjectId } = Schema.Types;
 
 // Model
 const kanbanSchema = new Schema({
@@ -21,13 +22,13 @@ const kanbanSchema = new Schema({
 	},
 	tasks: [
 		{
-			type: Schema.Types.ObjectId,
+			type: ObjectId,
 			ref: "Task",
 		},
 	],
 	users: [
 		{
-			type: Schema.Types.ObjectId,
+			type: ObjectId,
 			ref: "User",
 		},
 	],
