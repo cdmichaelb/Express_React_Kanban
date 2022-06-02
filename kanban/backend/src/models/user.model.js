@@ -3,6 +3,7 @@
 // one-to-many with tasks
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const bcrypt = require("bcrypt");
 
 // Model
 const userSchema = Schema(
@@ -57,11 +58,17 @@ userSchema.virtual("tasks", {
 // Statics
 userSchema.statics.signup = async function (username, email, password) {
 	const user = new this();
+
 	user.name = username;
 	user.email = email;
 	user.password = password;
 
-	return await user.save();
+	try {
+		await user.save();
+		return user;
+	} catch (error) {
+		throw new Error(error);
+	}
 };
 
 // Methods
@@ -82,15 +89,6 @@ userSchema.methods.comparePassword = function (password) {
 };
 
 // Middleware
-userSchema.pre("save", function (next) {
-	const user = this;
-
-	if (user.isModified("password")) {
-		user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
-	}
-
-	next();
-});
 
 // Export
 const User = mongoose.model("User", userSchema);

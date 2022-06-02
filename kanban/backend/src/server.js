@@ -26,8 +26,8 @@ app.use(morgan("dev"));
 app.use(cors());
 
 // Routes
-// app.use("/kanban", kanbanRoutes);
-// app.use("/auth", authRoutes);
+app.use("/kanban", kanbanRoutes);
+app.use("/", authRoutes);
 // app.use("/column", columnRoutes);
 // app.use("/task", taskRoutes);
 // app.use("/admin", adminRoutes);

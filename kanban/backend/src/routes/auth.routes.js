@@ -14,8 +14,9 @@ router.post(
 	[...signupValidator, handleValidationErrors],
 	async (req, res) => {
 		const { username, email, password } = req.body;
-
-		const userExists = await User.findOne({ username });
+		console.log(req.body);
+		const userExists = await User.findOne({ name: username });
+		console.log(userExists);
 		if (userExists) {
 			return res.status(400).send({
 				message: "Username already exists",
@@ -57,3 +58,5 @@ router.post(
 		}
 	}
 );
+
+module.exports = router;
