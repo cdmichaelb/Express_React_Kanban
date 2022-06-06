@@ -28,8 +28,8 @@ app.use(cors());
 // Routes
 app.use("/kanban", kanbanRoutes);
 app.use("/", authRoutes);
-// app.use("/column", columnRoutes);
-// app.use("/task", taskRoutes);
+app.use("/kanban/", columnRoutes);
+app.use("/kanban/", taskRoutes);
 // app.use("/admin", adminRoutes);
 
 // Connect to MongoDB

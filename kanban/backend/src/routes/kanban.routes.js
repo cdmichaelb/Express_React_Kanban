@@ -1,18 +1,18 @@
 const { AsyncRouter: Router } = require("express-async-router");
 const jwt = require("jsonwebtoken");
-
+const jwtMiddleware = require("../middleware/jwt.Middleware");
 const User = require("../models/user.model");
 const Kanban = require("../models/kanban.model");
 
 const router = Router();
 
 // Create a new kanban **WORKING
-router.post("/", async (req, res) => {
+router.post("/", [jwtMiddleware], async (req, res) => {
 	const { name, description, users } = req.body;
 
 	try {
 		const kanban = await Kanban.create(name, description, users);
-		console.log(kanban);
+		// console.log(kanban);
 		return res.send(kanban);
 	} catch (error) {
 		return res.status(400).send({
@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
 });
 
 // View a kanban **WORKING
-router.get("/:id", async (req, res) => {
+router.get("/:id", [jwtMiddleware], async (req, res) => {
 	const { id } = req.params;
 
 	try {
@@ -30,13 +30,13 @@ router.get("/:id", async (req, res) => {
 		res.send(kanban);
 	} catch (error) {
 		return res.status(400).send({
-			message: error.message,
+			message: `Kanban with id ${id} does not exist`,
 		});
 	}
 });
 
 // Update a kanban
-router.put("/:id", async (req, res) => {
+router.put("/:id", [jwtMiddleware], async (req, res) => {
 	const { id } = req.params;
 	const { name, description, users } = req.body;
 
@@ -45,27 +45,27 @@ router.put("/:id", async (req, res) => {
 		res.send(kanban);
 	} catch (error) {
 		return res.status(400).send({
-			message: error.message,
+			message: `Kanban with id ${id} does not exist`,
 		});
 	}
 });
 
 // Delete a kanban **WORKING
-router.delete("/:_id", async (req, res) => {
+router.delete("/:id", [jwtMiddleware], async (req, res) => {
 	try {
-		const kanban = await Kanban.findById(req.params._id);
+		const kanban = await Kanban.findById(req.params.id);
 		kanban.delete();
 
 		return res.send(kanban);
 	} catch (error) {
 		return res.status(400).send({
-			message: error.message,
+			message: `Kanban with id ${id} does not exist`,
 		});
 	}
 });
 
 // View all kanbans belonging to logged in user **WORKING
-router.get("/", async (req, res) => {
+router.get("/", [jwtMiddleware], async (req, res) => {
 	// if no id is provided, return all kanbans
 	if (req.user) {
 		try {
@@ -73,7 +73,7 @@ router.get("/", async (req, res) => {
 			res.send(kanbans);
 		} catch (error) {
 			return res.status(400).send({
-				message: error.message,
+				message: `Kanban with id ${id} does not exist`,
 			});
 		}
 	} else {
