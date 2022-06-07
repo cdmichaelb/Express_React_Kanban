@@ -10,6 +10,8 @@ Projected minimum viable products completion date: June \_\_, 2022
 
 Initial Features:
 
+![test](https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png =250x250)
+
 - [x] Implement a Kanban-backend using Express
 - [ ] Implement a Kanban-frontend using React as a SPA
 - [ ] Format using TailwindCSS
