@@ -31,7 +31,7 @@ Extra Features:
 - [x] Readme.md
 - [x] Database planning
 - [x] Model creation
-- [x Test creation
+- [x] Test creation
 
 ### Week 2
 
