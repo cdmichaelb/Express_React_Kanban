@@ -30,12 +30,12 @@ Extra Features:
 
 - [x] Readme.md
 - [x] Database planning
-- [ ] Model creation
-- [ ] Test creation
+- [x] Model creation
+- [x Test creation
 
 ### Week 2
 
-- [ ] Express Backend development
+- [x] Express Backend development
 
 ### Week 3
 
