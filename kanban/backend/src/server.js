@@ -22,22 +22,22 @@ const app = express();
 // Middleware
 
 app.use(express.json());
-app.use(morgan("dev"));
+app.use(morgan("tiny"));
 app.use(cors());
 
 // Routes
 app.use("/kanban", kanbanRoutes);
 app.use("/", authRoutes);
-app.use("/kanban/", columnRoutes);
-app.use("/kanban/", taskRoutes);
+app.use("/api/kanban", columnRoutes);
+app.use("/api/kanban", taskRoutes);
 // app.use("/admin", adminRoutes);
 
 // Connect to MongoDB
 const connectDB = async (dbName = process.env.DB_NAME) => {
 	try {
-		const connection = await mongoose.connect(`mongodb://localhost/${dbName}`);
+		const connection = await mongoose.connect(`mongodb://127.0.0.1/${dbName}`);
 		if (process.env.ENV !== "test") {
-			console.log(`\n💾Connected to mongodb://localhost/${dbName}`);
+			console.log(`\n💾Connected to mongodb://127.0.0.1/${dbName}`);
 		}
 		return connection;
 	} catch (err) {
@@ -52,7 +52,7 @@ const startServer = async () => {
 	try {
 		app.listen(process.env.PORT, async () => {
 			await connectDB();
-			console.log(`🚀Server started at http://localhost:${process.env.PORT}\n`);
+			console.log(`🚀Server started at http://127.0.0.1:${process.env.PORT}\n`);
 		});
 	} catch (err) {
 		console.error(err);

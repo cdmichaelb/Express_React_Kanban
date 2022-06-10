@@ -7,11 +7,11 @@ const Kanban = require("../models/kanban.model");
 const router = Router();
 
 // Create a new kanban **WORKING
-router.post("/", [jwtMiddleware], async (req, res) => {
-	const { name, description, users } = req.body;
+router.post("/", async (req, res) => {
+	const { name, description } = req.body;
 
 	try {
-		const kanban = await Kanban.create(name, description, users);
+		const kanban = await Kanban.create(name, description);
 		// console.log(kanban);
 		return res.send(kanban);
 	} catch (error) {
@@ -22,7 +22,7 @@ router.post("/", [jwtMiddleware], async (req, res) => {
 });
 
 // View a kanban **WORKING
-router.get("/:id", [jwtMiddleware], async (req, res) => {
+router.get("/:id", async (req, res) => {
 	const { id } = req.params;
 
 	try {
@@ -36,7 +36,7 @@ router.get("/:id", [jwtMiddleware], async (req, res) => {
 });
 
 // Update a kanban
-router.put("/:id", [jwtMiddleware], async (req, res) => {
+router.put("/:id", async (req, res) => {
 	const { id } = req.params;
 	const { name, description, users } = req.body;
 
@@ -51,7 +51,7 @@ router.put("/:id", [jwtMiddleware], async (req, res) => {
 });
 
 // Delete a kanban **WORKING
-router.delete("/:id", [jwtMiddleware], async (req, res) => {
+router.delete("/:id", async (req, res) => {
 	try {
 		const kanban = await Kanban.findById(req.params.id);
 		kanban.delete();
@@ -65,7 +65,7 @@ router.delete("/:id", [jwtMiddleware], async (req, res) => {
 });
 
 // View all kanbans belonging to logged in user **WORKING
-router.get("/", [jwtMiddleware], async (req, res) => {
+router.get("/", async (req, res) => {
 	// if no id is provided, return all kanbans
 	if (req.user) {
 		try {

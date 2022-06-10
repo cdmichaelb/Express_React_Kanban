@@ -6,12 +6,11 @@ const jwtMiddleware = require("../middleware/jwt.Middleware");
 const User = require("../models/user.model");
 const Kanban = require("../models/kanban.model");
 const Task = require("../models/task.model");
-const Task = require("../models/task.model");
 
 const router = Router();
 
 // Create a new task
-router.post("/:id/tasks", [jwtMiddleware], async (req, res) => {
+router.post("/:id/tasks", async (req, res) => {
 	const { id } = req.params;
 	const { name, description } = req.body;
 
@@ -29,7 +28,7 @@ router.post("/:id/tasks", [jwtMiddleware], async (req, res) => {
 });
 
 // View a task
-router.get("/:id/tasks/:taskId", [jwtMiddleware], async (req, res) => {
+router.get("/:id/tasks/:taskId", async (req, res) => {
 	const { id, taskId } = req.params;
 
 	try {
@@ -43,7 +42,7 @@ router.get("/:id/tasks/:taskId", [jwtMiddleware], async (req, res) => {
 });
 
 // Update a task
-router.put("/:id/tasks/:taskId", [jwtMiddleware], async (req, res) => {
+router.put("/:id/tasks/:taskId", async (req, res) => {
 	const { id, taskId } = req.params;
 	const { name, description } = req.body;
 
@@ -58,7 +57,7 @@ router.put("/:id/tasks/:taskId", [jwtMiddleware], async (req, res) => {
 });
 
 // Delete a task
-router.delete("/:id/tasks/:taskId", [jwtMiddleware], async (req, res) => {
+router.delete("/:id/tasks/:taskId", async (req, res) => {
 	const { id, taskId } = req.params;
 	const { name, description } = req.body;
 
@@ -75,7 +74,7 @@ router.delete("/:id/tasks/:taskId", [jwtMiddleware], async (req, res) => {
 });
 
 // Get all tasks in a kanban
-router.get("/:id/tasks", [jwtMiddleware], async (req, res) => {
+router.get("/:id/tasks", async (req, res) => {
 	const { id } = req.params;
 
 	try {
@@ -87,3 +86,5 @@ router.get("/:id/tasks", [jwtMiddleware], async (req, res) => {
 		});
 	}
 });
+
+module.exports = router;

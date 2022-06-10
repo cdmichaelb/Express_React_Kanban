@@ -11,7 +11,7 @@ const Task = require("../models/task.model");
 const router = Router();
 
 // Create a new column
-router.post("/:id/columns", [jwtMiddleware], async (req, res) => {
+router.post("/:id/columns", async (req, res) => {
 	const { id } = req.params;
 	const { name, description } = req.body;
 
@@ -29,7 +29,7 @@ router.post("/:id/columns", [jwtMiddleware], async (req, res) => {
 });
 
 // View a column
-router.get("/:id/columns/:columnId", [jwtMiddleware], async (req, res) => {
+router.get("/:id/columns/:columnId", async (req, res) => {
 	const { id, columnId } = req.params;
 
 	try {
@@ -43,7 +43,7 @@ router.get("/:id/columns/:columnId", [jwtMiddleware], async (req, res) => {
 });
 
 // Update a column
-router.put("/:id/columns/:columnId", [jwtMiddleware], async (req, res) => {
+router.put("/:id/columns/:columnId", async (req, res) => {
 	const { id, columnId } = req.params;
 	const { name, description } = req.body;
 
@@ -58,7 +58,7 @@ router.put("/:id/columns/:columnId", [jwtMiddleware], async (req, res) => {
 });
 
 // Delete a column
-router.delete("/:id/columns/:columnId", [jwtMiddleware], async (req, res) => {
+router.delete("/:id/columns/:columnId", async (req, res) => {
 	const { id, columnId } = req.params;
 	const { name, description } = req.body;
 
@@ -75,7 +75,7 @@ router.delete("/:id/columns/:columnId", [jwtMiddleware], async (req, res) => {
 });
 
 // Get all columns in a kanban
-router.get("/:id/columns", [jwtMiddleware], async (req, res) => {
+router.get("/:id/columns", async (req, res) => {
 	const { id } = req.params;
 
 	try {
@@ -87,3 +87,4 @@ router.get("/:id/columns", [jwtMiddleware], async (req, res) => {
 		});
 	}
 });
+module.exports = router;
