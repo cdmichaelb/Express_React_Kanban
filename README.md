@@ -11,8 +11,8 @@ Projected minimum viable products completion date: June 10, 2022
 Initial Features:
 
 - [x] Implement a Kanban-backend using Express
-- [ ] Implement a Kanban-frontend using React as a SPA
-- [ ] Format using TailwindCSS
+- [x] Implement a Kanban-frontend using React as a SPA
+- [x] Format using TailwindCSS
 - [ ] Implement drag and drop to move tasks.
 - [ ] Implement Comments and Tags
 
@@ -39,8 +39,8 @@ Extra Features:
 
 ### Week 3
 
-- [ ] React Frontend development
-- [ ] Basic tailwind
+- [x] React Frontend development
+- [x] Basic tailwind
 
 ### Extra time
 
